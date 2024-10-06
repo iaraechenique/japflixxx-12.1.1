@@ -44,7 +44,6 @@ document.getElementById('btnBuscar').addEventListener('click', function() {
 }
 });
 
-// Función para convertir vote_average en estrellas
 function generateStars(vote_average) {
   const maxStars = 5;
   const starFull = '<span class="star-full">★</span>'; // Estrella llena
@@ -58,22 +57,21 @@ function generateStars(vote_average) {
 }
 
 
-// Función para mostrar los detalles de la película seleccionada
+
 function showMovieDetails(movie) {
-    // Asignar el título y overview al Offcanvas
+   
     document.getElementById('offcanvasTitle').textContent = movie.title;
     document.getElementById('offcanvasOverview').textContent = movie.overview;
   
-    // Limpiar y agregar los géneros
+
   const genresList = document.getElementById('offcanvasGenres');
-  genresList.innerHTML = ''; // Limpiar la lista de géneros
+  genresList.innerHTML = ''; // Limpiar la lista de los géneros
   movie.genres.forEach(genre => {
     const genreItem = document.createElement('li');
-    genreItem.textContent = genre.name; // Acceder al nombre del género
+    genreItem.textContent = genre.name; // Acceder al nombre del género de la peli
     genresList.appendChild(genreItem);
   });
 
-  // Actualizar el dropdown con la información de la película
   const dropdownItems = `
   <li><a class="dropdown-item" href="#">Year: ${new Date(movie.release_date).getFullYear()}</a></li>
   <li><a class="dropdown-item" href="#">Runtime: ${movie.runtime} minutes</a></li>
@@ -81,11 +79,10 @@ function showMovieDetails(movie) {
   <li><a class="dropdown-item" href="#">Revenue: $${movie.revenue.toLocaleString()}</a></li>
 `;
 
-// Inyectar los elementos al dropdown
+
 const dropdownMenu = document.querySelector('.dropdown-menu');
 dropdownMenu.innerHTML = dropdownItems;
 
-    // Mostrar el Offcanvas
     const offcanvasElement = document.getElementById('movieOffcanvas');
     const bsOffcanvas = new bootstrap.Offcanvas(offcanvasElement);
     bsOffcanvas.show();
