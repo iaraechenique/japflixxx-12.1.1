@@ -1,17 +1,16 @@
-// Función que carga los datos desde la API cuando la página se carga
+
 let moviesData = [];
 
 window.addEventListener('load', function() {
   fetch('https://japceibal.github.io/japflix_api/movies-data.json')
     .then(response => response.json())
     .then(data => {
-        moviesData = data;  // Guardar los datos, no mostrarlos inmediatamente
+        moviesData = data; 
       console.log("Películas cargadas:", moviesData);
     })
     .catch(error => console.error('Error al cargar los datos:', error));
 });
 
-// Función para buscar y mostrar las películas que coincidan con el término de búsqueda
 document.getElementById('btnBuscar').addEventListener('click', function() {
   const searchTerm = document.getElementById('inputBuscar').value.toLowerCase(); // Obtener el término de búsqueda y convertirlo a minúsculas
   const moviesDiv = document.getElementById('lista');
